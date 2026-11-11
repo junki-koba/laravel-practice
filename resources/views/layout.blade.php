@@ -82,6 +82,11 @@
         .search-bar button {
             width: auto;
         }
+        .error {
+    color: #d94a4a;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
     </style>
 </head>
 <body>

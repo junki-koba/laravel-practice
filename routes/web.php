@@ -43,3 +43,14 @@ Route::get('/inquiries', function (\Illuminate\Http\Request $request) {
 
     return view('inquiries', ['inquiries' => $inquiries, 'keyword' => $keyword]);
 });
+Route::post('/inquiries', function (\Illuminate\Http\Request $request) {
+    $validated = $request->validate([
+        'name' => 'required|max:50',
+        'email' => 'required|email',
+        'message' => 'required|max:1000',
+    ]);
+
+    Inquiry::create($validated);
+
+    return redirect('/inquiries');
+});

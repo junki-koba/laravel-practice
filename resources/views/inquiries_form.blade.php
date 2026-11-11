@@ -8,13 +8,22 @@
     <form method="POST" action="/inquiries">
         @csrf
         <label>名前</label>
-        <input type="text" name="name" placeholder="お名前を入力">
+        <input type="text" name="name" value="{{ old('name') }}" placeholder="お名前を入力">
+        @error('name')
+            <div class="error">{{ $message }}</div>
+        @enderror
 
         <label>メール</label>
-        <input type="text" name="email" placeholder="example@example.com">
+        <input type="text" name="email" value="{{ old('email') }}" placeholder="example@example.com">
+        @error('email')
+            <div class="error">{{ $message }}</div>
+        @enderror
 
         <label>内容</label>
-        <textarea name="message" rows="4" placeholder="お問い合わせ内容を入力"></textarea>
+        <textarea name="message" rows="4" placeholder="お問い合わせ内容を入力">{{ old('message') }}</textarea>
+        @error('message')
+            <div class="error">{{ $message }}</div>
+        @enderror
 
         <button type="submit">登録</button>
     </form>
